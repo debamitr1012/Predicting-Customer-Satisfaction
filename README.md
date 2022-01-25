@@ -1,5 +1,9 @@
 # Tree-Based Algorithms Approach on Predicting Customer Satisfaction
-          
+
+<div align="center">
+    <img src="Predicting Customer Satisfaction.jpeg" alt="Logo" width="400" height="400">
+</div>
+
 Brazilian E-Commerce Public Dataset by Olist: https://www.kaggle.com/olistbr/brazilian-ecommerce
 
 Decision tree, Random forest, and Gradient boosting are used in this hands-on project to predict customer satisfaction of the e-commerce dataset.
