@@ -1,7 +1,7 @@
 # Tree-Based Algorithms Approach on Predicting Customer Satisfaction
 
 <div align="center">
-    <img src="Predicting Customer Satisfaction.jpeg" alt="Logo" width="400" height="400">
+    <img src="Predicting Customer Satisfaction.jpeg" alt="Logo" width="200" height="200">
 </div>
 
 Brazilian E-Commerce Public Dataset by Olist: https://www.kaggle.com/olistbr/brazilian-ecommerce
