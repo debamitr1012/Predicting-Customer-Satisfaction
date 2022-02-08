@@ -385,6 +385,51 @@ f1 Test Data: 0.91816832732669
 Jaccard Training Data: 0.849651591412861
 Jaccard Test Data: 0.848716441309033
 '''
+# Majority Rule Voting classifier (from the previous best estimators)
+c1 = DecisionTreeClassifier(max_depth=4, min_samples_split=100, random_state=42)
+c2 = RandomForestClassifier(max_depth=5, n_estimators=50, random_state=42)
+c3 = GradientBoostingClassifier(max_depth=5, n_estimators=50, random_state=42)
+c4 = ExtraTreesClassifier()
+v_clf = VotingClassifier(estimators=[
+          ('dt', c1), ('rf', c2), ('gb', c3), ('ext', c4)], voting='hard')
+v_clf.fit(X_train, y_train)
+
+# Plotting voting classifier confusion matrix
+fig, ax = plt.subplots(figsize=(10, 7))
+sns.set(font_scale=1.75)
+sns.set(font_scale=1.75)
+y_test_pred = v_clf.predict(X_test)
+y_train_pred = v_clf.predict(X_train)
+cm = confusion_matrix(y_test, y_test_pred, labels=v_clf.classes_)
+disp = ConfusionMatrixDisplay(confusion_matrix=cm,
+                              display_labels=v_clf.classes_)
+disp.plot(ax=ax)
+fig.suptitle('Voting Classifier confusion matrix', fontsize=25)
+plt.show()
+
+# accuracy calc
+accuracy_training = accuracy_score(y_train, y_train_pred)
+accuracy_test = accuracy_score(y_test, y_test_pred)
+f1_test = f1_score(y_test, y_test_pred)
+f1_train = f1_score(y_train, y_train_pred)
+jaccard_test = jaccard_score(y_test, y_test_pred)
+jaccard_train = jaccard_score(y_train, y_train_pred)
+print(f'Voting Classifier Model')
+print(f'Accuracy Training Data: {accuracy_training}')
+print(f'Accuracy Test Data: {accuracy_test}')
+print(f'f1 Training Data: {f1_train}')
+print(f'f1 Test Data: {f1_test}')
+print(f'Jaccard Training Data: {jaccard_train}')
+print(f'Jaccard Test Data: {jaccard_test}')
+'''
+Voting Classifier Model
+Accuracy Training Data: 0.8783940197733301
+Accuracy Test Data: 0.8715215818664095
+f1 Training Data: 0.9318181818181819
+f1 Test Data: 0.9280738700793779
+Jaccard Training Data: 0.8723404255319149
+Jaccard Test Data: 0.865800211576243
+'''
 
 # Adaptive Boost classifier with Random Forest Classifier as base estimator
 
